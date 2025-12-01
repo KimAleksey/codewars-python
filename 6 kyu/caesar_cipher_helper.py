@@ -36,6 +36,6 @@ class CaesarCipher:
         return res
 
 
-c = CaesarCipher(5); # creates a CipherHelper with a shift of five
+c = CaesarCipher(5) # creates a CipherHelper with a shift of five
 print(c.encode('Codewars')) # returns 'HTIJBFWX'
 print(c.decode('BFKKQJX')) # returns 'WAFFLES'
