@@ -1,23 +1,34 @@
-def rgb(r: int, g: int, b: int) -> str:
-    """
-    RBL as input must be integers. Output is color in HEX format in str.
+from dataclasses import dataclass
 
-    :param r: red
-    :param g: green
-    :param b: blue
-    :return: Color in HEX format
-    """
-    if not any(isinstance(i, int) for i in (r, g, b)):
-        raise TypeError("Input must be integers")
+@dataclass
+class RGB:
+    r: int
+    g: int
+    b: int
 
-    def convert(i: int) -> str:
+    def __post_init__(self) -> None:
+        """
+        Check if input is valid.
+        :return: None
+        """
+
+        if not all(isinstance(i, int) for i in (self.r, self.g, self.b)):
+            raise TypeError("Input must be integers")
+
+    @staticmethod
+    def convert_int_to_hex(i: int) -> str:
+        """
+        Int formated to 2 characters with leading zeros.
+        :param i: int
+        :return: hex
+        """
+
         clamped = min(max(i, 0), 255)
-
         return f"{clamped:02X}"
 
-    hex_colors = [convert(i) for i in (r, g, b)]
+    def to_hex(self):
+        hex_colors = "".join(self.convert_int_to_hex(i) for i in (self.r, self.g, self.b))
+        return hex_colors
 
-    return "".join(hex_colors)
 
-
-print(rgb(-20, 275, 125))
+print(RGB(1, 275, 125).to_hex())
