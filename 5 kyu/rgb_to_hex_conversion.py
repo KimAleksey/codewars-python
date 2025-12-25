@@ -15,7 +15,6 @@ class RGB:
         Check if input is valid.
         :return: None
         """
-
         if not all(isinstance(i, int) for i in (self.r, self.g, self.b)):
             raise TypeError("Input must be integers")
 
@@ -26,7 +25,6 @@ class RGB:
         :param i: int
         :return: hex
         """
-
         clamped = min(max(i, 0), 255)
         return f"{clamped:02X}"
 
