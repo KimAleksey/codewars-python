@@ -19,4 +19,4 @@ def sum_pairs(ints: list[int], s: int) -> list[int] | None:
     return None
 
 
-print(sum_pairs([11, 3, 7, 5],10))
+print(sum_pairs([10, 5, 2, 3, 7, 5],10))
